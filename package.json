@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/TD-AMCB/excel-to-markdown-safe.git"
   },
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },
