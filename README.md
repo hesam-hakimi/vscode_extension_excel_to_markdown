@@ -51,6 +51,7 @@ Convert Excel workbooks (.xlsx) into Markdown tables directly from VS Code. Each
 - Tests: `npm test`
 - Build: `npm run build`
 - Package vsix: `npm run package` (requires `vsce` dev dependency)
+- Verify icon is present in the VSIX before publishing:\n  - `npm run package:ls | grep -i icon`\n  - or `unzip -l excel-to-markdown-safe-*.vsix | grep -i icon`\n  If missing, ensure `.vscodeignore` contains `!icon.png`, rebuild, then reinstall the VSIX to refresh the cache.\n*** End Patch
 
 ## Sample Data
 Generate a small sample workbook for testing: `npm run create:sample` (writes to `sample-data/sample.xlsx`).

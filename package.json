@@ -2,7 +2,7 @@
   "name": "excel-to-markdown-safe",
   "displayName": "Excel to Markdown (Safe)",
   "description": "Convert Excel workbooks (.xlsx) into Markdown tables, safely and per sheet or combined.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "TD-AMCB",
   "license": "MIT",
   "repository": {
@@ -99,6 +99,8 @@
     "lint": "eslint src --ext .ts",
     "test": "vitest run",
     "package": "npm run build && vsce package",
+    "package:ls": "vsce ls",
+    "package:verify-icon": "vsce ls | grep -i icon.png || true",
     "prepare": "npm run build",
     "create:sample": "node ./scripts/createSampleWorkbook.js"
   },

@@ -54,6 +54,17 @@ Install the VSIX locally for validation:
 code --install-extension excel-to-markdown-safe-0.0.1.vsix
 ```
 
+### Verify the icon is included
+- List VSIX contents before publishing:
+```
+npm run package:ls | grep -i icon
+```
+- Or inspect the VSIX directly:
+```
+unzip -l excel-to-markdown-safe-*.vsix | grep -i icon
+```
+If you do not see `icon.png`, ensure `.vscodeignore` ends with `!icon.png`, rebuild, and reinstall the VSIX (uninstall the previous version first so VS Code refreshes the icon cache).
+
 ## 8) Clean
 ```
 npm run clean   # removes dist/
