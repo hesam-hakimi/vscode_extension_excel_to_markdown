@@ -7,4 +7,12 @@ coverage/**
 .gitignore
 vitest.config.ts
 scripts/**
-node_modules/vscode/**
+tsconfig.json
+tsconfig.test.json
+package-lock.json
+node_modules/**
+!node_modules/.bin/
+!node_modules/vscode/**
+tmp-npm-cache/**
+.npm/**
+package-lock.json
