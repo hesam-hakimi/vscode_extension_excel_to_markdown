@@ -54,9 +54,3 @@ Convert Excel workbooks (.xlsx) into Markdown tables directly from VS Code. Each
 
 ## Sample Data
 Generate a small sample workbook for testing: `npm run create:sample` (writes to `sample-data/sample.xlsx`).
-
-## Icon
-Add your icon as `icon.png` in the project root and reference it from `package.json` before publishing.
-
-## Changelog
-See `CHANGELOG.md`.
