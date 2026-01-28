@@ -1,0 +1,120 @@
+{
+  "name": "excel-to-markdown-safe",
+  "displayName": "Excel to Markdown (Safe)",
+  "description": "Convert Excel workbooks (.xlsx) into Markdown tables, safely and per sheet or combined.",
+  "version": "0.0.1",
+  "publisher": "TD-AMCB",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TD-AMCB/excel-to-markdown-safe.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:excelToMarkdown.convertAll",
+    "onCommand:excelToMarkdown.convertSelect"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "excelToMarkdown.convertAll",
+        "title": "Excel: Convert to Markdown (All Sheets)",
+        "category": "Excel to Markdown"
+      },
+      {
+        "command": "excelToMarkdown.convertSelect",
+        "title": "Excel: Convert to Markdown (Select Sheet)",
+        "category": "Excel to Markdown"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "excelToMarkdown.convertAll",
+          "when": "resourceExtname == '.xlsx'",
+          "group": "2_markdown"
+        },
+        {
+          "command": "excelToMarkdown.convertSelect",
+          "when": "resourceExtname == '.xlsx'",
+          "group": "2_markdown"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Excel to Markdown",
+      "properties": {
+        "excelToMarkdown.outputMode": {
+          "type": "string",
+          "enum": ["perSheet", "singleFile"],
+          "default": "perSheet",
+          "description": "When set to perSheet, each worksheet is written to its own Markdown file. When singleFile, all worksheets are combined into one Markdown file with headings."
+        },
+        "excelToMarkdown.outputDirectory": {
+          "type": "string",
+          "enum": ["sameAsSource", "pickFolder"],
+          "default": "sameAsSource",
+          "description": "Where to save generated Markdown files. 'sameAsSource' places files next to the Excel file. 'pickFolder' prompts for a folder."
+        },
+        "excelToMarkdown.maxRows": {
+          "type": "number",
+          "default": 2000,
+          "minimum": 1,
+          "maximum": 200000,
+          "description": "Maximum number of rows converted per worksheet to avoid huge output. Extra rows are skipped with a warning."
+        },
+        "excelToMarkdown.maxCols": {
+          "type": "number",
+          "default": 100,
+          "minimum": 1,
+          "maximum": 2000,
+          "description": "Maximum number of columns converted per worksheet. Extra columns are skipped with a warning."
+        },
+        "excelToMarkdown.includeSheetTitleHeading": {
+          "type": "boolean",
+          "default": true,
+          "description": "When true, include the sheet name as a Markdown heading above each table."
+        },
+        "excelToMarkdown.allowXlsm": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow selecting .xlsm files (macro-enabled). Macros are never executed; stored cell values only."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc -p .",
+    "watch": "tsc -p . --watch",
+    "lint": "eslint src --ext .ts",
+    "test": "vitest run",
+    "package": "npm run build && vsce package",
+    "prepare": "npm run build",
+    "create:sample": "node ./scripts/createSampleWorkbook.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.3",
+    "vsce": "2.9.0"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
+  }
+}

@@ -1,0 +1,10 @@
+src/**
+test/**
+coverage/**
+.vscode-test/**
+.eslintrc.json
+.eslintignore
+.gitignore
+vitest.config.ts
+scripts/**
+node_modules/vscode/**

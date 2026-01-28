@@ -1,0 +1,11 @@
+node_modules
+dist
+.vscode-test
+coverage
+.DS_Store
+sample-data
+tmp-npm-cache
+*.vsix
+excel-to-markdown-safe-*.vsix
+*.log
+.npm/
