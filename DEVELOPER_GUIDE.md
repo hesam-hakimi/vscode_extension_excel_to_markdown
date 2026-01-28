@@ -45,13 +45,13 @@ npm run create:sample
   - `Excel: Convert to Markdown (Select Sheet)`
 
 ## 7) Package for distribution
-Creates `excel-to-markdown-safe-0.0.1.vsix` in the project root.
+Creates `excel-to-markdown-safe-0.0.x.vsix` in the project root using the local `@vscode/vsce`.
 ```
 npm run package
 ```
 Install the VSIX locally for validation:
 ```
-code --install-extension excel-to-markdown-safe-0.0.1.vsix
+code --install-extension excel-to-markdown-safe-0.0.x.vsix
 ```
 
 ### Verify the icon is included
